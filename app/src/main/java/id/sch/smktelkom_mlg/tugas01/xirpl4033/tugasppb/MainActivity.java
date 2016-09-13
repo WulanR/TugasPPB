@@ -79,10 +79,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         }
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-    }
 
     public boolean isValid() {
         boolean valid = true;
@@ -111,4 +107,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         return valid;
     }
 
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+    }
 }
