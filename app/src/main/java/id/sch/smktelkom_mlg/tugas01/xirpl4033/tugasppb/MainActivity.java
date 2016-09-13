@@ -2,6 +2,7 @@ package id.sch.smktelkom_mlg.tugas01.xirpl4033.tugasppb;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -36,6 +37,50 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         bOk = (Button) findViewById(R.id.buttonOK);
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
 
+        cbMenggambar.setOnCheckedChangeListener(this);
+        cbMembaca.setOnCheckedChangeListener(this);
+        cbNontonfilm.setOnCheckedChangeListener(this);
+
+        bOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doProcess();
+            }
+        });
+
+    }
+
+    private void doProcess() {
+        if (isValid()) {
+
+            String nama;
+            int tahun = Integer.parseInt(etTahun.getText().toString());
+            String status;
+            String hobi = null;
+
+            nama = etNama.getText().toString();
+            int usia = 2016 - tahun;
+
+            if (cbMenggambar.isChecked()) {
+                hobi = cbMenggambar.getText().toString();
+            }
+            if (cbMembaca.isChecked()) {
+                hobi = cbMembaca.getText().toString();
+            }
+            if (cbNontonfilm.isChecked()) {
+                hobi = cbNontonfilm.getText().toString();
+            }
+            if (rbBM.isChecked()) {
+                status = rbBM.getText().toString();
+            } else {
+                status = rbM.getText().toString();
+            }
+            tvHasil.setText("Biodata Anda : \n" + "Nama : " + nama + "\nUsia : " + usia + "\nStatus : " + status + "\nHobi : " + hobi + ".");
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
     }
 }
