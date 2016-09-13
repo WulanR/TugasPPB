@@ -83,4 +83,32 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
     }
+
+    public boolean isValid() {
+        boolean valid = true;
+
+        String nama = etNama.getText().toString();
+        String tahun = etTahun.getText().toString();
+
+        if (nama.isEmpty()) {
+            etNama.setError("Nama Belum Diisi");
+            valid = false;
+        } else if (nama.length() < 3) {
+            etNama.setError("Nama minimal 3 karakter");
+            valid = false;
+        } else {
+            etNama.setError(null);
+        }
+
+        if (tahun.isEmpty()) {
+            etTahun.setError("Tahun Kelahiran belum diisi");
+            valid = false;
+        } else if (tahun.length() != 4) {
+            etTahun.setError("Format Tahun Salah");
+        } else {
+            etTahun.setError(null);
+        }
+        return valid;
+    }
+
 }
